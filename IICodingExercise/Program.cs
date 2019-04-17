@@ -13,7 +13,7 @@ namespace IICodingExercise
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to {0}, The program is now running, please press any key to exit!", BankName);
+            Console.WriteLine("Welcome to {0}, The program is now running!", BankName);
             TestData();
             Console.WriteLine("Program is finished running, press any key to exit");
             Console.ReadKey();
