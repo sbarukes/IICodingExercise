@@ -8,14 +8,36 @@ namespace IICodingExercise
 {
     class Program
     {
+        static List<Account> BankAccounts = new List<Account>();
+        static string BankName = "United Trust Bank";
+
         static void Main(string[] args)
         {
-            // The code provided will print ‘Hello World’ to the console.
-            // Press Ctrl+F5 (or go to Debug > Start Without Debugging) to run your app.
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Welcome to {0}, The program is now running, please press any key to exit!", BankName);
+            TestData();
+            Console.WriteLine("Program is finished running, press any key to exit");
             Console.ReadKey();
+        }
 
-            // Go to http://aka.ms/dotnet-get-started-console to continue learning how to build a console app! 
+        public static void TestData()
+        {
+            Account Austin = new Account("Austin Rukes", InvType.Checking, 1500.00);
+            BankAccounts.Add(Austin);
+            Account Dameon = new Account("Dameon", InvType.IndividualInvestment, 2000.00);
+            BankAccounts.Add(Dameon);
+
+            //tests empty values for owners
+            Account EmptyOwnerTest = new Account("", InvType.IndividualInvestment, 1500.00);
+            BankAccounts.Add(EmptyOwnerTest);
+
+            //tests condition of withdrawing more than 1000 from individual investment accounts
+            Dameon.Withraw(1001.00);
+
+            //tests overdraft blocking capabilities
+            Austin.Withraw(1600.00);
+
+            //tests transfer functionality
+            Dameon.Transfer(Austin, 1000);
         }
     }
 }
